@@ -40,6 +40,20 @@ def VarryC(phi, cArray):
     table = pd.DataFrame(results,  columns = ['Parking Spaces', 'Blocking Probailty'])
     return table
 
+#Function to caluate the minum number of parking spaces need with a given phiself
+#Takes phi  as [int or Float], c0 (initial c (number of parking spots)) as [int only] and blockingThershold (probablity) as [Float]
+#Returns c (minimum parking spots within threshold) [int], bn (Bloacking Probailty) [Float]
+def MinimumBn(phi, c0, blockingThershold):
 
-print("For lamda = 60, and mean = 2.5 and  and varrying parking spaces [150, 155, 160]")
-print(VarryC(150, [150,155,160]))
+    bn = 1
+    while bn > blockingThershold:
+        c0 = c0 + 1
+        bn = BlockingProb(phi, c0)
+
+    return[c0, bn]
+
+
+
+#print("For lamda = 60, and mean = 2.5 and  and varrying parking spaces [150, 155, 160]")
+#print(VarryC(150, [150,155,160]))
+#print(MinimumBn(150, 50, 0.05))
