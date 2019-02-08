@@ -8,6 +8,7 @@
 import numpy as np
 import math
 import pandas as pd
+import sys
 
 # BlockingProb(phi, c) - Function to return blocking probailty for a M/G/c/c Queue,
 # Takes phi = (lamda(rate) / mu (1/mean)) as [int or float] and c (available parking spots) as [int only]
@@ -43,17 +44,25 @@ def VarryC(phi, cArray):
 #Function to caluate the minum number of parking spaces need with a given phiself
 #Takes phi  as [int or Float], c0 (initial c (number of parking spots)) as [int only] and blockingThershold (probablity) as [Float]
 #Returns c (minimum parking spots within threshold) [int], bn (Bloacking Probailty) [Float]
-def MinimumBn(phi, c0, blockingThershold):
+def MinimumBn(phi,blockingThershold):
 
     bn = 1
+    cn = 1
     while bn > blockingThershold:
-        c0 = c0 + 1
-        bn = BlockingProb(phi, c0)
+        cn = cn + 1
+        bn = BlockingProb(phi, cn)
 
-    return[c0, bn]
+    return[cn, bn]
 
+#def main(phi, Bt):
+    #MinimumBn(phi,Bt)
+
+#if __name__=='__main__':
+    #print(sys.argv[1])
+
+    #print(sys.argv[2])
 
 
 #print("For lamda = 60, and mean = 2.5 and  and varrying parking spaces [150, 155, 160]")
 #print(VarryC(150, [150,155,160]))
-#print(MinimumBn(150, 50, 0.05))
+print(MinimumBn(7050,0.1))
