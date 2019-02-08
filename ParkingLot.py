@@ -45,7 +45,6 @@ def VarryC(phi, cArray):
 #Takes phi  as [int or Float], c0 (initial c (number of parking spots)) as [int only] and blockingThershold (probablity) as [Float]
 #Returns c (minimum parking spots within threshold) [int], bn (Bloacking Probailty) [Float]
 def MinimumBn(phi,blockingThershold):
-
     bn = 1
     cn = 1
     while bn > blockingThershold:
@@ -54,22 +53,18 @@ def MinimumBn(phi,blockingThershold):
 
     return[cn, bn]
 
-#ignore this trying to be all cool with argv and stuff
-#"
-#def main(phi, Bt):
-    #MinimumBn(phi,Bt)
 
-#if __name__=='__main__':
-    #print(sys.argv[1])
+def main(phi, Bt):
+    print(MinimumBn(phi, Bt))
 
-    #print(sys.argv[2])
-#"
+if __name__=='__main__' and len(sys.argv) ==3:
+    main(int(sys.argv[1]), float(sys.argv[2]))
 
-#text book example
-#print("For lamda = 60, and mean = 2.5 and  and varrying parking spaces [150, 155, 160]")
-#print(VarryC(150, [150,155,160]))
+else:
+    print("""
+    Use:
+    argv[1] = phi (lambda / mu)
+    argv[2] = Thershold (0.005 for project) 
 
-
-
-#minimum bn
-#print(MinimumBn(7050,0.005))
+    """)
+#print(VarryC(150, [150, 155, 160]))
