@@ -61,6 +61,7 @@ def MinimumBn(phi,blockingThershold):
 #Takes phi  as [int or Float] and blockingThershold (probablity) as [Float]
 #Returns pyplot graph
 def MinBnVisual(phi, threshold):
+    #Same processes as MinimumBn, which addition of arrays to record data.
     bn = 1
     cn = 1
     bArray = []
@@ -80,15 +81,16 @@ def MinBnVisual(phi, threshold):
 
 
 
-
+    # Plotting data
     plt.axhline(y = threshold, linestyle='--', color = 'g')
     plt.plot(cArray, bArray, 'r')
     plt.plot([c],[b], 'o')
-    plt.annotate(f"({c} , {round(b,4)} )", (c,b), xytext=(c, b + 0.1), arrowprops=dict(arrowstyle="->"))
-    plt.xlabel('Parking Spaces (c)')
-    plt.ylabel('Blocking Probailty (b)')
-    plt.legend(["Minimum Threshold","Blocking Probailty for given c", "Optimum Value"])
-    plt.title("Calculating The Minimum Required Parking Spaces")
+    plt.annotate(f"({c} , {round(b,4)} )", (c,b), xytext=(c, b + 0.1), arrowprops=dict(arrowstyle="->"), fontsize = 11)
+    plt.xlabel('Parking Spaces (c)', fontsize = 16)
+    plt.ylabel('Blocking Probailty (b)', fontsize = 16)
+    plt.legend(["Minimum Blocking probablity","Blocking Probailty as C increases", "Optimum Value"], fontsize = 11)
+    plt.title("Calculating The Minimum Required Parking Spaces", fontsize = 16)
+
     plt.show()
 
     return
